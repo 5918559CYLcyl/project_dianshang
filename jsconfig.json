@@ -1,0 +1,11 @@
+//@/别名路径联想
+{
+    "compilerOptions": {
+      "baseUrl": "./",
+      "paths": {
+        "@/*": [
+          "src/*"
+        ]
+      }
+    }
+  }
