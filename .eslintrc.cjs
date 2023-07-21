@@ -7,5 +7,8 @@ module.exports = {
   ],
   parserOptions: {
     ecmaVersion: 'latest'
-  }
+  },
+  rules:{
+    'vue/multi-ward-component-names':0,
+  },
 }
