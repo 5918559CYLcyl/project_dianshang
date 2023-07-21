@@ -17,7 +17,7 @@ const router = createRouter({
           component:Home//home是默认渲染页，path置空
         },
         {
-          path:'category',
+          path:'category/:id',
           component:Category
         }
       ]
