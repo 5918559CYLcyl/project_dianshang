@@ -22,3 +22,11 @@ export function getHotAPI(){
         }
     )
   }
+//获取所有商品
+  export function getGoodsAPI(){
+    return  httpInstance(
+        {
+            url:'/home/goods'
+        }
+    )
+  }
