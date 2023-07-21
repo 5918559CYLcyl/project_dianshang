@@ -13,3 +13,12 @@ export function findNewAPI(){
         url:'/home/new'
     })
 }
+
+//人气模块
+export function getHotAPI(){
+    return  httpInstance(
+        {
+            url:'/home/hot'
+        }
+    )
+  }
