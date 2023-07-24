@@ -33,7 +33,13 @@ const router = createRouter({
     }
     
       
-  ]
+  ],
+  //路由每次跳转后回到顶部而不是之前位置
+  scrollBehavior(){
+    return {
+      top:0
+    }
+  }
 })
 
 export default router
