@@ -3,8 +3,10 @@ import {getDetail} from '@/apis/detail'
 import {useRoute} from 'vue-router'
 import {ref,onMounted} from 'vue'
 import DetailHot from '@/views/Detail/components/DetailHot.vue'
-import imageView from '@/components/imageView/index.vue'
-import XtxSku from '@/components/XtxSku/index.vue'
+//被全局组件替代进行优化
+// import imageView from '@/components/imageView/index.vue'
+// import XtxSku from '@/components/XtxSku/index.vue'
+
 
 const goods=ref({})
 const route=useRoute()
