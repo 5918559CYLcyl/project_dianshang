@@ -14,8 +14,8 @@ import {lazyPlugin} from '@/directives'
 import {componentPlugin} from '@/components'
 const app = createApp(App)
 const pinia=createPinia()
-pinia.use(piniaPluginPersistedstate)
 app.use(pinia)
+pinia.use(piniaPluginPersistedstate)
 // app.use(createPinia())
 app.use(router)
 app.use(lazyPlugin)
