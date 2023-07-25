@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
+import {useUserStore} from '@/stores/user'
 import 'element-plus/theme-chalk/el-message.css'
 const httpInstance=axios.create({
     baseURL:'http://pcapi-xiaotuxian-front-devtest.itheima.net',
@@ -7,9 +8,16 @@ const httpInstance=axios.create({
 })
 //拦截器:1. 实例化 - baseURL + timeout
 //  拦截器 - 携带token 401拦截等
-
+//拦截器里配置token，很多接口都需要token,一次配置都可生效。
 // axios请求拦截器
 httpInstance.interceptors.request.use(config => {
+  // 1.从pinia获取token数据
+  const userStore=useUserStore()
+  // 2.按后端要求拼接token数据
+  const token=userStore.userInfo.token
+  if(token){
+        config.headers.Authorization=`Bearer ${token}`
+  }
   return config
 }, e => Promise.reject(e))
 
