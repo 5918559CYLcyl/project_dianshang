@@ -46,7 +46,11 @@ export const useCartStore=defineStore('cart',()=>{
  const updateNewList=async()=>{
     const res=await findNewCartListAPI()
     cartList.value=res.result
- }       
+ }   
+//清除购物车
+const clearCart=()=>{
+    cartList.value=[]
+}    
 //单选功能singlecheck
 const singleCheck=(skuId,selected)=>{
     const item=cartList.value.find((item)=>item.skuId===skuId)
@@ -75,7 +79,8 @@ const selectedPrice=computed(()=>cartList.value.filter(item=>item.selected).redu
         isAll,
         allCheck,
         selectedCount,
-        selectedPrice
+        selectedPrice,
+        clearCart
     }
 },{
     persist:true,

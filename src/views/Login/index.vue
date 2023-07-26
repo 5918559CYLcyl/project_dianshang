@@ -3,7 +3,7 @@
 import {ref} from 'vue'
 // import {loginAPI} from '@/apis/user'
 import { ElMessage } from 'element-plus'
-import {useUserStore} from '@/stores/user'
+import {useUserStore} from '@/stores/userStore'
 import 'element-plus/theme-chalk/el-message.css'
 import {useRouter} from 'vue-router'//带R获取方法，不带r是获取参数
 const userStore=useUserStore()
