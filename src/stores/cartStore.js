@@ -1,14 +1,26 @@
 //封装购物车模块
 import {defineStore} from 'pinia'
 import {ref,computed} from 'vue'
+import {useUserStore} from './user'
+import {insertCartAPI,findNewCartListAPI} from '@/apis/cart'
 
 export const useCartStore=defineStore('cart',()=>{
+    const userStore=useUserStore()
+    const isLogin =computed(()=>userStore.userInfo.token)
     //定义state-cartList
     const cartList=ref([])
     //定义action-addCart
-    const addCart=(goods)=>{
+    const addCart=async (goods)=>{
         //添加购物车操作
         //思路：通过匹配传递过来的商品对象中的skuId能不能在cartList中找到，找到了就是添加过
+        const {skuId,count}=goods
+        if(isLogin.value){
+            //登录之后加入购物车
+            await insertCartAPI({skuId,count})
+            const res=await findNewCartListAPI()
+            cartList.value=res.result
+        }else{
+            //非登陆下加入购物车
         const item=cartList.value.find((item)=>goods.skuId===item.skuId)
         if(item){
             item.count++
@@ -16,6 +28,9 @@ export const useCartStore=defineStore('cart',()=>{
             cartList.value.push(goods)
         }
     }
+        }
+        
+        
 //删除购物车
     const delCart=(skuId)=>{
         //思路：1.找到要删除下标值-splice
