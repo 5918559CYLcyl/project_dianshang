@@ -1,6 +1,6 @@
 <script setup> 
-import UserInfo from '@/views/Member/components/UserInfo.vue'
-import UserOrder from '@/views/Member/components/UserOrder.vue'
+import UserInfo from '@/views/Member/components/userInfo.vue'
+import UserOrder from '@/views/Member/components/userOrder.vue'
 </script>
 
 <template>
