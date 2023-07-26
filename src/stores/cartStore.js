@@ -1,7 +1,7 @@
 //封装购物车模块
 import {defineStore} from 'pinia'
 import {ref,computed} from 'vue'
-import {useUserStore} from './user'
+import {useUserStore} from './userStore'
 import {insertCartAPI,findNewCartListAPI,delCartAPI} from '@/apis/cart'
 
 export const useCartStore=defineStore('cart',()=>{

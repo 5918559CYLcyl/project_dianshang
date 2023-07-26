@@ -1,5 +1,5 @@
 <script setup>
-import {useCategoryStore} from '@/stores/category'//导入pinia
+import {useCategoryStore} from '@/stores/categoryStore'//导入pinia
 const categoryStore=useCategoryStore()
 
 </script>
