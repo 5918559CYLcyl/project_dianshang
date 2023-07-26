@@ -1,8 +1,7 @@
 <script setup>
-// import {useCategoryStore} from '@/stores/category'
-// const categoryStore=useCategoryStore()
-import LayoutHeaderUI from './LayoutHeaderUl.vue'
-import HeadCart from './HeadCart.vue'
+import {useCategoryStore} from '@/stores/category'
+const categoryStore = useCategoryStore()
+import HeaderCart from './HeadCart.VUE'
 </script>
 
 <template>
@@ -11,22 +10,21 @@ import HeadCart from './HeadCart.vue'
       <h1 class="logo">
         <RouterLink to="/">小兔鲜</RouterLink>
       </h1>
-      <!-- <ul class="app-header-nav">
-          <li class="home">
+      <ul class="app-header-nav">
+        <li class="home">
           <RouterLink to="/">首页</RouterLink>
         </li>
         <li class="home" v-for="item in categoryStore.categoryList" :key="item.id">
           <RouterLink active-class="active" :to="`/category/${item.id}`">{{item.name}}</RouterLink>
-        </li> -->
-       
-      <!-- </ul> -->
-      <LayoutHeaderUI />
+        </li>
+        
+      </ul>
       <div class="search">
-        <i class="iconfont icon-icon_search"></i>
+        <i class="iconfont icon-search"></i>
         <input type="text" placeholder="搜一搜">
       </div>
       <!-- 头部购物车 -->
-      <HeadCart />
+      <HeaderCart />
     </div>
   </header>
 </template>
