@@ -2,7 +2,7 @@
 import {defineStore} from 'pinia'
 import {ref,computed} from 'vue'
 import {useUserStore} from './user'
-import {insertCartAPI,findNewCartListAPI} from '@/apis/cart'
+import {insertCartAPI,findNewCartListAPI,delCartAPI} from '@/apis/cart'
 
 export const useCartStore=defineStore('cart',()=>{
     const userStore=useUserStore()
@@ -17,8 +17,7 @@ export const useCartStore=defineStore('cart',()=>{
         if(isLogin.value){
             //登录之后加入购物车
             await insertCartAPI({skuId,count})
-            const res=await findNewCartListAPI()
-            cartList.value=res.result
+            updateNewList()
         }else{
             //非登陆下加入购物车
         const item=cartList.value.find((item)=>goods.skuId===item.skuId)
@@ -32,12 +31,22 @@ export const useCartStore=defineStore('cart',()=>{
         
         
 //删除购物车
-    const delCart=(skuId)=>{
+    const delCart=async(skuId)=>{
         //思路：1.找到要删除下标值-splice
         // 2.使用数组的过滤方法--filter
+        if(isLogin.value){
+            await delCartAPI([skuId])
+            updateNewList()
+        }else{
         const idx=cartList.value.findIndex((item)=>skuId===item.skuId)
         cartList.value.splice(idx,1)
     }
+        }
+ //获取最新列表action
+ const updateNewList=async()=>{
+    const res=await findNewCartListAPI()
+    cartList.value=res.result
+ }       
 //单选功能singlecheck
 const singleCheck=(skuId,selected)=>{
     const item=cartList.value.find((item)=>item.skuId===skuId)
